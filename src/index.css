@@ -1,0 +1,133 @@
+@import '@fontsource/jetbrains-mono';
+@import '@fontsource/orbitron';
+@import '@fontsource/vt323';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --berlin-ubahn: #F0CA00;
+  --berlin-black: #0D0208;
+  --berlin-steel: #3D5A80;
+  --berlin-white: #FFFFFF;
+  --berlin-gray: #D1D5DB;
+}
+
+@layer base {
+  html {
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    background-color: var(--berlin-black);
+    color: var(--berlin-white);
+    font-size: 18px; /* Increased base for mobile readability */
+  }
+  
+  body {
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    background-color: var(--berlin-black);
+    color: var(--berlin-white);
+    min-height: 100vh;
+    font-size: 1rem;
+    line-height: 1.6; /* Better readability */
+    font-feature-settings: 'liga' 1, 'calt' 1; /* Enable ligatures */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-rendering: optimizeLegibility;
+  }
+  
+  /* Mobile font size boost */
+  @media (max-width: 640px) {
+    html {
+      font-size: 20px; /* Even larger on mobile */
+    }
+  }
+}
+
+@layer components {
+  /* Headers and branding - Keep cyber aesthetic */
+  .font-cyber { 
+    font-family: 'Orbitron', monospace; 
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  
+  /* Body text - Maximum readability */
+  .font-mono { 
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-weight: 400;
+  }
+  
+  /* Terminal accents only - Small elements */
+  .font-terminal { 
+    font-family: 'VT323', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+  }
+  
+  /* Input fields - Larger for mobile */
+  input, textarea, select {
+    font-size: 1rem !important; /* Prevents iOS zoom */
+  }
+  
+  @media (max-width: 640px) {
+    input, textarea, select {
+      font-size: 1.1rem !important; /* Extra large on mobile */
+    }
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--berlin-ubahn);
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+  
+  .berlin-btn {
+    background: var(--berlin-ubahn);
+    color: var(--berlin-black);
+    font-family: 'JetBrains Mono', monospace;
+    border: 2px solid var(--berlin-ubahn);
+    padding: 14px 28px;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+  }
+  
+  .berlin-btn:hover {
+    box-shadow: 0 0 15px rgba(240, 202, 0, 0.5);
+    transform: scale(1.05);
+  }
+  
+  .stat-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--berlin-steel);
+    border-left: 4px solid var(--berlin-ubahn);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+  
+  .circuit-header {
+    background:
+      linear-gradient(90deg, transparent 24%, var(--berlin-ubahn) 25%, var(--berlin-ubahn) 26%, transparent 27%),
+      linear-gradient(transparent 24%, var(--berlin-ubahn) 25%, var(--berlin-ubahn) 26%, transparent 27%);
+    background-size: 20px 20px;
+    opacity: 0.1;
+  }
+  
+  /* Legacy components - updated for Berlin theme */
+  .btn-primary {
+    @apply berlin-btn;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-700 hover:bg-gray-600 text-berlin-white font-medium py-2 px-4 rounded-md transition-colors border border-berlin-steel;
+  }
+  
+  .card {
+    @apply glass-card;
+  }
+}
